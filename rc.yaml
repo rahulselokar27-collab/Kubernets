@@ -1,0 +1,32 @@
+#Replication Controller (RC) YAML File
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-rc
+spec:
+  replicas: 3
+
+  selector:
+    app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+
+#Create the Replication Controller        
+  #kubectl apply -f rc.yaml
+
+#Check the Replication Controller
+  #kubectl get rc
+
+#Check the Pods created by the Replication Controller
+  #kubectl get pods -l app=nginx
