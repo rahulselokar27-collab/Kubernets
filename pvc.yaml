@@ -10,22 +10,23 @@ spec:
       storage: 1Gi
 
 #create pvc
-kubectl apply -f pvc.yaml      
+#kubectl apply -f pvc.yaml      
 
 #check pvc
-kubectl get pvc
+#kubectl get pvc
 
 #Describe PVC
-kubectl describe pvc my-pvc
+#kubectl describe pvc my-pvc
 
 #Pod with PVC
+---
 apiVersion: v1
 kind: Pod
 metadata:
   name: test-pvc-pod
 spec:
   containers:
-  - name: nginx
+  - name: my-container
     image: nginx
     volumeMounts:
     - mountPath: "/usr/share/nginx/html"
@@ -37,4 +38,4 @@ spec:
       claimName: my-pvc
 
 #Apply the pod manifest
-kubectl apply -f pod-with-pvc.yaml      
+#kubectl apply -f pod-with-pvc.yaml      
