@@ -1,0 +1,37 @@
+# create a namespace called dev
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+#Create Namespace
+ #kubectl apply -f namespace.yaml
+
+#check the Namespace
+ #kubectl get namespaces
+#or
+ #kubectl get ns
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  namespace: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      limits:
+        cpu: "250m"
+        memory: "256Mi"
+
+#Apply the pod manifest
+ #kubectl apply -f pod.yaml
+
+#Check Pods in the Namespace:
+ #kubectl get pods -n dev
